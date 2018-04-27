@@ -12136,8 +12136,8 @@ div#notebook {
 <p><strong>Answer:</strong></p>
 <ol>
 <li>This customer is in the top 25% of spenders for both fresh products and detergents. It also spends relatively high amounts on grocery and milk. This could well be a supermarket (albeit one with no frozen section).</li>
-<li>This could be a deli given its high relative spending on fresh and grocery products.</li>
-<li>This could be a restaurant given its high spending on frozen and fresh products and non-trivial amounts spent in all the remaining categories.</li>
+<li>This could be a small deli given its high relative spending on fresh and grocery products, with spending across all 7 products well below the mean.</li>
+<li>This could be a small restaurant given its high spending on frozen (above mean) and fresh products and non-trivial amounts spent in all the remaining categories.</li>
 </ol>
 
 </div>
@@ -12321,7 +12321,7 @@ Based on the above, a case can be made for dropping the Detergents_Paper feature
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f99b9347b00&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc2c8e95048&gt;</pre>
 </div>
 
 </div>
@@ -13449,7 +13449,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong>
-There is 1 point that has outliers in 3 features and 3 points that have outliers in 2 features.The first point has extreme low spending in milk, grocery and delicatessen which might reflect a store that is running in financial difficulty and is about to close.</p>
+There is 1 point (id 154) that has outliers in 3 features and 4 points (65,66,75,128) that have outliers in 2 features.The first point has extreme low spending in milk, grocery and delicatessen which might reflect a store that is running in financial difficulty and is about to close.</p>
 <p>These outliers should be removed from the dataset to mitigate their impact on the position of the cluster centroids (k-means).</p>
 
 </div>
@@ -13544,8 +13544,12 @@ There is 1 point that has outliers in 3 features and 3 points that have outliers
 <ul>
 <li>The first and second principal components explain 70.80% of the data variance.</li>
 <li>The first four principal components explain 90.11% of the data variance.</li>
-<li>Dimension 1 is chosen so as to explain the maximum amount of variance in the feature data (43.80%).Dimension 1 is strongly influenced by high spenders in Detergents_paper, milk and grocery which suggests it could be a cafe or dairy shop. Dimension 2 features high spenders in fresh, frozen and delicatessen products which would reflect the profile of a restaurant. Dimension 3 has high spenders in fresh and delicatessen products and could well be a sandwich shop.Dimension 4 has high spenders in frozen and delicatessen products and could be a take-away shop.</li>
+<li>Dimension 1 is chosen so as to explain the maximum amount of variance in the feature data (43.80%).  </li>
 </ul>
+<p>Dimension 1 is strongly influenced by s[emdomg om det</p>
+<p>Dimension 2 features high spenders in fresh, frozen and delicatessen products which would reflect the spending pattern of a restaurant.</p>
+<p>Dimension 3 reflects an inverse relationship in spending for fresh and delicatessen. For instance, a vegetable market would spend highly on fresh but barely any amount on delicatessen.</p>
+<p>Dimension 4 has high spenders in frozen and delicatessen products and could be a take-away shop.</p>
 
 </div>
 </div>
@@ -13961,7 +13965,7 @@ There is 1 point that has outliers in 3 features and 3 points that have outliers
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f99b9d68940&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc2c98c4d68&gt;</pre>
 </div>
 
 </div>
@@ -14025,12 +14029,16 @@ There is 1 point that has outliers in 3 features and 3 points that have outliers
 <p><strong>Answer:</strong></p>
 <p><strong> Advantages of K-Means clustering </strong></p>
 <ul>
+<li>Typically optimises euclidean distance relative to a centroid</li>
 <li>Works for very large samples and medium number of clusters</li>
+<li>Hard clustering means points are exlusively assigned to a specific cluster</li>
+<li>WOrks well on spherical clusters that are evenly sized</li>
 </ul>
 <p><strong> Advantages of GMM clustering </strong></p>
 <ul>
 <li>Fastest algorithm for learning mixture models</li>
 <li>No bias towards cluster shapes and sizes</li>
+<li>Soft clustering means points can belong to multiple clusters with a probability</li>
 </ul>
 <p><strong> Choice of algorithm </strong>
 K-means will be used as it will segment the customers in different groups which will provide the most benefit to the wholesaler. The use of K-means is aided by the fact that the data has been normalised and stripped of its outliers.</p>
@@ -14233,7 +14241,7 @@ With  30 clusters, the silhouette score is:  0.356617336111</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Inverse transform the centers</span>
